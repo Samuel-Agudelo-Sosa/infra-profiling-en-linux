@@ -1,0 +1,67 @@
+--------------------------------------------------------------------------------
+Profile data file 'evidencia/callgrind.out' (creator: callgrind-3.22.0)
+--------------------------------------------------------------------------------
+I1 cache: 
+D1 cache: 
+LL cache: 
+Timerange: Basic block 0 - 74134950
+Trigger: Program termination
+Profiled target:  ./lento (PID 22998, part 1)
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Thresholds:       99
+Include dirs:     
+User annotated:   
+Auto-annotation:  on
+
+--------------------------------------------------------------------------------
+Ir                   
+--------------------------------------------------------------------------------
+618,980,002 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir                    file:function
+--------------------------------------------------------------------------------
+609,686,052 (98.50%)  lento.cpp:main [/home/samuel/Documents/Programacion/Univalle/Infraestructuras/clase6/infra-profiling-en-linux/lento]
+  6,291,491 ( 1.02%)  ./string/../sysdeps/x86_64/multiarch/memset-vec-unaligned-erms.S:__memset_avx2_unaligned_erms [/usr/lib/x86_64-linux-gnu/libc.so.6]
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: lento.cpp
+--------------------------------------------------------------------------------
+Ir                   
+
+          .           #include <chrono>
+          .           #include <cstdio>
+          .           #include <vector>
+          .           using namespace std;
+          .           using namespace std::chrono;
+          .           const int N = 512;
+         11 ( 0.00%)  int main() {
+          .             vector<double> a(N*N), b(N*N), c(N*N, 0.0);
+  4,259,840 ( 0.69%)    for (int i = 0; i < N*N; i++) { a[i] = (i % 7) * 0.5; b[i] = (i % 5) * 0.25; }
+          4 ( 0.00%)    auto t0 = high_resolution_clock::now();
+        857 ( 0.00%)  => ???:0x00000000001090c0 (1x)
+      1,536 ( 0.00%)    for (int i = 0; i < N; i++)
+    658,432 ( 0.11%)      for (int j = 0; j < N; j++) {
+          .                 double s = 0;
+603,979,776 (97.58%)        for (int k = 0; k < N; k++) s += a[i*N+k] * b[k*N+j];
+    131,072 ( 0.02%)        c[i*N+j] = s;
+          .               }
+          2 ( 0.00%)    auto t1 = high_resolution_clock::now();
+         31 ( 0.00%)  => ???:0x00000000001090c0 (1x)
+    655,361 ( 0.11%)    double suma = 0; for (double x : c) suma += x;
+          .             printf("tiempo %ld ms checksum %.3f\n", duration_cast<milliseconds>(t1-t0).count(), suma);
+         18 ( 0.00%)  }
+      1,704 ( 0.00%)  => /usr/include/c++/13/bits/stl_vector.h:std::vector<double, std::allocator<double> >::~vector() (3x)
+
+--------------------------------------------------------------------------------
+The following files chosen for auto-annotation could not be found:
+--------------------------------------------------------------------------------
+  ./string/../sysdeps/x86_64/multiarch/memset-vec-unaligned-erms.S
+
+--------------------------------------------------------------------------------
+Ir                   
+--------------------------------------------------------------------------------
+609,686,052 (98.50%)  events annotated
+

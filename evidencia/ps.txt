@@ -1,0 +1,19 @@
+== ps -L: un renglon por hilo, %CPU promedio desde que arranco
+    PID     TID %CPU PSR STAT COMMAND
+  22981   22981 39.6   1 Sl+  ocupado
+  22981   22983 79.6  10 Sl+  ocupado
+  22981   22984  103   3 Rl+  ocupado
+  22981   22985  104   8 Rl+  ocupado
+
+== top -H: %CPU del ultimo intervalo
+top - 00:19:04 up  9:41,  1 user,  load average: 0.30, 0.44, 0.48
+Threads:   4 total,   1 running,   3 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 12.4 us,  0.4 sy,  0.0 ni, 87.2 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :  15673.2 total,   5967.1 free,   5431.4 used,   5054.9 buff/cache     
+MiB Swap:   4096.0 total,   4096.0 free,      0.0 used.  10241.8 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+  22985 samuel    20   0   31300   3848   3612 R  99.9   0.0   0:03.31 ocupado
+  22984 samuel    20   0   31300   3848   3612 S  36.0   0.0   0:02.98 ocupado
+  22981 samuel    20   0   31300   3848   3612 S   0.0   0.0   0:00.99 ocupado
+  22983 samuel    20   0   31300   3848   3612 S   0.0   0.0   0:01.99 ocupado

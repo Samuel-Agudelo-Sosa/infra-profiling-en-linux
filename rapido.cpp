@@ -25,7 +25,14 @@ int main() {
   auto t0 = high_resolution_clock::now();
 
   // TODO: la multiplicación va aquí.
-
+  for (int i = 0; i < N; i++) {
+    for (int k = 0; k < N; k++) {
+      double a_ik = a[i * N + k]; // Guardamos el valor en un escalar para reutilizarlo
+      for (int j = 0; j < N; j++) {
+        c[i * N + j] += a_ik * b[k * N + j]; // Acceso secuencial contiguo en memoria
+      }
+    }
+  }
   auto t1 = high_resolution_clock::now();
 
   double suma = 0;

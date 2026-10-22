@@ -1,0 +1,18 @@
+
+ Performance counter stats for './lento':
+
+     <not counted>      cpu_atom/cycles/                                                        (0.00%)
+       620,550,117      cpu_core/cycles/                                                      
+     <not counted>      cpu_atom/instructions/                                                  (0.00%)
+       625,294,624      cpu_core/instructions/                                                
+     <not counted>      cpu_atom/cache-references/                                              (0.00%)
+        64,023,317      cpu_core/cache-references/                                            
+     <not counted>      cpu_atom/cache-misses/                                                  (0.00%)
+           239,243      cpu_core/cache-misses/                                                
+
+       0.287896773 seconds time elapsed
+
+       0.280026000 seconds user
+       0.008000000 seconds sys
+
+
